@@ -1,0 +1,172 @@
+
+/*
+	General
+ */
+body {
+	font-family: "Times New Roman", Garamond, Trebuchet;
+	font-size: 16px;
+	margin-top: 120px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+h1 {
+	font-size: 72px;
+	font-weight: normal;
+	padding-bottom: .4em;
+	line-height: 70px;
+}
+h1 span.author{
+	font-size: 48px;
+}
+div.container-fluit{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+h1:hover span.quotationmarks{
+	color: #40aed7;
+}
+a{
+	text-decoration: none;
+}
+a.marktop{
+	height: 60px;
+}
+/*
+ Nav
+ */
+div.navbar{
+	height: 86px;
+}
+div.bordertop{
+	background-color: #40aed7;
+	height: 5px;
+}
+ul.nav{ 
+	height: 80px;
+	vertical-align: middle;
+}
+.navbar-inverse .brand {
+	margin-top: 27px;
+	/*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+	font-size: 2.7em;
+}
+div.nav-collapse{
+	float: right;
+}
+ul.nav li{
+	margin-right: 40px;
+	margin-top: 27px;
+	text-transform: uppercase;
+}
+.navbar-inverse .nav .active>a, 
+.navbar-inverse .nav .active>a:hover, 
+.navbar-inverse .nav .active>a:focus,
+ul.nav li:hover{
+	background-color: #40aed7;
+	border-radius:6px;
+}
+div p{
+	padding: 0 8px;
+}
+
+/*
+	Services
+ */
+div.service{
+	height: 300px;
+	margin: 0 auto;
+	padding-top: 15px;
+	text-align: center;
+}
+div.service ul{
+	list-style-type: none;
+	margin: 0;
+}
+
+div.service:hover{
+	background-color: #40aed7;
+	color: #fff;
+}
+div.service div.integration{
+	background: url(../img/integration.png);
+	background-size:100px 100px;
+	width: 100px;
+	height: 100px;
+	border:none;
+	margin: 0 auto;
+}
+div.service:hover div.integration{
+	background: url("../img/integration-over.png");
+	background-size:100px 100px;
+}
+div.service div.management{
+	background: url(../img/management.png);
+	background-size:100px 100px;
+	width: 100px;
+	height: 100px;
+	border:none;
+	margin: 0 auto;
+}
+div.service:hover div.management{
+	background: url("../img/management-over.png");
+	background-size:100px 100px;
+}
+div.service div.diversification{
+	background: url(../img/diversification.png);
+	background-size:100px 100px;
+	width: 100px;
+	height: 100px;
+	border:none;
+	margin: 0 auto;
+}
+div.service:hover div.diversification{
+	background: url("../img/diversification-over.png");
+	background-size:100px 100px;
+}
+div.service div.professionalism{
+	background: url(../img/professionalism.png);
+	background-size:100px 100px;
+	width: 100px;
+	height: 100px;
+	border:none;
+	margin: 0 auto;
+}
+div.service:hover div.professionalism{
+	background: url("../img/professionalism-over.png");
+	background-size:100px 100px;
+}
+
+/*
+About me
+ */
+div.aboutme{
+	background-color: #1b1b1b;
+	padding: 30px 0 30px 0;
+}
+div.aboutme p{
+	color: #fff;
+	font-size: 32px;
+	line-height: 40px;
+}
+/*
+Work
+ */
+
+div.work{
+	font-size: 20px;
+}
+
+/*
+Footer
+ */
+div.footer{
+	background-color: #1b1b1b;
+	margin-top: 30px;
+	padding: 30px 0 30px 0;
+}
+div.footer p{
+	color: #fff;
+	font-size: 24px;
+	line-height: 24px;
+}
+div.footer p a{
+	font-size: 16px;
+}
