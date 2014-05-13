@@ -5,20 +5,16 @@
 body {
 	font-family: "Times New Roman", Garamond, Trebuchet;
 	font-size: 16px;
-	margin-top: 120px; /* 60px to make the container go all the way to the bottom of the topbar */
+	margin-top: 80px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
 h1 {
-	font-size: 72px;
+	font-size: 58px;
 	font-weight: normal;
 	padding-bottom: .4em;
-	line-height: 70px;
+	line-height: 60px;
 }
 h1 span.author{
-	font-size: 48px;
-}
-div.container-fluit{
-	padding-top: 30px;
-	padding-bottom: 30px;
+	font-size: 36px;
 }
 h1:hover span.quotationmarks{
 	color: #40aed7;
@@ -28,6 +24,18 @@ a{
 }
 a.marktop{
 	height: 60px;
+}
+div.navbar-inner .container{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+div.container{
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
+div.container-fluit{
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 /*
  Nav
@@ -40,7 +48,7 @@ div.bordertop{
 	height: 5px;
 }
 ul.nav{ 
-	height: 80px;
+	min-height: 80px;
 	vertical-align: middle;
 }
 .navbar-inverse .brand {
@@ -66,7 +74,29 @@ ul.nav li:hover{
 div p{
 	padding: 0 8px;
 }
+@media (max-width: 979px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: fixed;
+  }
+  ul.nav li {
+    margin-top: 0;
+    text-transform: none;
+	}
 
+	.navbar-inverse .nav-collapse .nav > li > a, 
+	.navbar-inverse .nav-collapse .dropdown-menu a {
+    color: #FFFFFF;
+	}
+}
+@media (max-width: 767px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: 0;
+    margin-left: 0;
+  }
+ }
 /*
 	Services
  */
@@ -133,17 +163,23 @@ div.service:hover div.professionalism{
 	background: url("../img/professionalism-over.png");
 	background-size:100px 100px;
 }
+@media (min-width: 768px) and (max-width: 979px) {
+	.row-fluid .span3 {
+    width: 46%;
+
+	}
+}
 
 /*
 About me
  */
 div.aboutme{
 	background-color: #1b1b1b;
-	padding: 30px 0 30px 0;
+	padding: 40px 0 30px 0;
 }
 div.aboutme p{
 	color: #fff;
-	font-size: 32px;
+	font-size: 28px;
 	line-height: 40px;
 }
 /*
@@ -151,7 +187,8 @@ Work
  */
 
 div.work{
-	font-size: 20px;
+	font-size: 16px;
+	padding-top: 40px;
 }
 
 /*
@@ -164,9 +201,9 @@ div.footer{
 }
 div.footer p{
 	color: #fff;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 24px;
 }
 div.footer p a{
-	font-size: 16px;
+	font-size: 14px;
 }
