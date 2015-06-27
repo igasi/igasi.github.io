@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Aplicaciones Web con Backbone.js - by igasi</title>
+
+		<meta name="description" content="A framework for easily creating WEB Apps ans SPAs">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Aplicaciones Web con Backbone.js</h1>
+					<h3>Backbone.js gives structure to web applications.</h3>
+					<p>
+						<small>By <a href="http://igasi.github.io/">Isaac Gasi</a> </small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Introducción</h2>
+						<p>
+							La meta de toda arquitectura es <strong>construir algo bien hecho</strong>.
+						</p>
+						<p>
+							En nuestro caso, queremos que nuestro código sea:
+							<ul>
+								<li>Funcional</li>
+								<li>Legible y Entendible</li>
+								<li>Mantenible y Durarero </li>
+								<li>Bonito (¿Por qué no?)</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Y la realidad es</h2>
+						<img width="" height="500" data-src="wabjs-img/codeugly.png">
+					</section>
+					<section>
+						<h2>Es por eso que</h2>
+						<p>
+							Frameworks modernos de JavaScript y librerías te pueden brindar una structura y organización en tus proyectos, el establecimiento de una base mantenible desde el principio.
+						</p>
+						<p>
+							Backbone.js es precisamente uno de estos Frameworks, es OpenSource, basado en jQuery, es ligero, simple, e implementa una variación del modelo MVC.
+						</p>
+					</section>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>¿Qué es MVC?</h2>
+						<p>
+						Un camino fácil para la organización de su código utilizando variaciones de un patrón conocido.
+						</p>
+						<br>
+						<p>
+							MVC
+							<br>
+							Model-View-Controller 
+							<br>
+							(Modelo - Vista - Controlador)
+						</p>
+					</section>
+					<section>
+						<h2>Models</h2>
+						<p>
+						Representan un dominio específico de conocimiento y los datos de  en una aplicación. 
+						<br>
+						Piense en esto como un "tipo" de datos que puede modelar - como un usuario, fotos, o una nota de ToDo.
+						</p>
+					</section>
+					<section>
+						<h2>Views</h2>
+						<p>
+							Típicamente constituyen la interfaz de usuario en una aplicación (por ejemplo, markup y plantillas)
+							<br>
+							Pero no tiene que ser necesariamente sólo esto. 
+							<br>
+							Observan modelos, pero no se comunican directamente con ellos.
+						</p>
+					</section>
+					<section>
+						<h2>Controllers</h2>
+						<p>
+							Manejan la entrada de datos (por ejemplo, los clics, las acciones del usuario) y actualizan los modelos.
+						</p>
+					</section>
+					<section>
+						<h2>Por lo tanto, En una aplicación MVC:</h2>
+						<ul>
+							<li>La entrada del usuario actúa sobre controladores</li>
+							<li>Los controladores actualizan los modelos</li>
+							<li>Las vistas observan los modelos y actualizan la interfaz de usuario cuando se producen cambios</li>
+						</ul>
+						<img width="" height="350" data-src="wabjs-img/mvcprocess.png">  
+					</section>
+					<section>
+						<h2>JavaScript MVC frameworks</h2>
+						<p>
+							No siempre siguen estrictamente el patrón anterior. Algunas soluciones (incluyendo Backbone.js) <strong>fusionan la responsabilidad del controlador en la vista</strong>, mientras que otros enfoques añaden componentes adicionales en la mezcla.
+						</p>
+					</section>
+					<section>
+						<h2>Por esta razón,</h2>
+						<p>
+							nos referimos a algunos Frameworks (en este caso Backbone.js) como un  modelo <strong>MV*</strong>
+						</p>
+						<img width="" height="450" data-src="wabjs-img/backbone_mvc.png">
+					</section>
+				</section>
+					
+				<section>
+					<section>
+						<h2>Backbone.js</h2>
+						<p>
+							Es una librería JavaScript ligera que añade estructura a su código del lado del cliente (browser). Esto hace que sea fácil de manejar y desacoplar las partes en su aplicación, dejándole con código que es más fácil de mantener a largo plazo.
+						</p>
+						<img width="" height="250" data-src="wabjs-img/backbone.png">
+					</section>
+
+					<section>
+						<h2>en pocas palabras</h2>
+						<img width="" height="350" data-src="wabjs-img/backbone3.jpg">
+					</section>
+
+					<section>
+						<p>
+							Desarrolladores suelen utilizar las bibliotecas como Backbone.js para crear aplicaciones de una sola página (SPAs). SPAs son aplicaciones web que se cargan en el navegador y luego reaccionan a los cambios de datos en el lado del cliente sin necesidad de que la página completa sea actualizada desde el servidor. More UX :)
+						</p>
+					</section>
+
+					<section>
+						<h2>Datos rápidos</h2>
+						<ul>
+							<li class="fragment">
+							Componentes básicos: Modelo, Vista, Colección, Router. Hace cumplir su propio sabor de MV*
+							</li>
+							<li class="fragment">
+								Comunicación basada en eventos entre Vistas y modelos. Es relativamente sencillo añadir detectores de eventos a cualquier atributo en un modelo, dando a los desarrolladores un control detallado sobre qué cambios en la vista.
+							</li>
+							<li class="fragment">
+								Soporta enlaces de datos a través de eventos manuales o un Key-value observing (KVO) library.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">
+								Soporte para interfaces RESTful fuera de la caja (fuera de backbone), por lo que los modelos pueden ser fácilmente vinculado a un backend.
+							</li>
+							<li class="fragment">
+								Extensivo sistema de eventos, es trivial agregar soporte.
+							</li>
+							<li class="fragment">
+								Los prototipos pueden ser instanciados con la palabra reservada new.
+							</li>
+							<li class="fragment">
+								Puedes ocupar el sistema de plantillas que desees, sin embargo, underscore viene por default.
+							</li>
+							<li class="fragment">
+								Convenciones claras y flexibles para aplicaciones de estructuración. Backbone no fuerza el uso de todos sus componentes y puede trabajar con sólo aquellos necesarios
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>IMPLEMENTACIÓN</h1>
+				</section>
+				<section>
+					<h2>Como configuiramos</h2>
+
+					<p>
+						Basta con poner estas tres líneas, preferentemente al final del body (cuestiones de rendimiento)
+					</p>
+
+					<pre><code data-trim contenteditable>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+					</code></pre>
+				</section>
+
+				<section>
+					<section>
+						<h2>Conceptos básicos</h2>
+						<ul>
+							<li class="fragment">Models: contienen datos para una aplicación, así como la lógica de todo estos datos</li>
+							<li class="fragment">Views: no contienen el código HTML para su aplicación; contienen la lógica detrás de la presentación de los datos del modelo para el usuario</li>
+							<li class="fragment">Template: Contiene el HTML base para presentar los datos</li>
+							<li class="fragment">Collections: son un conjunto de modelos</li>
+							<li class="fragment">Routers:  proporcionan una forma para que usted conecte URL (ya sean fragmentos de hash #, o reales) de las partes de su aplicación</li>
+							<li class="fragment">Events: son una inversión básica de control; cuando sucede algo, debes hacer esto</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Models
+
+							Podemos usar un modelo simplemente definiendo
+
+							```
+							var Todo = Backbone.Model.extend({});
+							```
+
+							De esta manera podremos instanciar nuestro propio modelo
+
+							```
+							var todo2 = new Todo({
+							  title: 'Check the attributes of both model instances in the console.',
+							  completed: true
+							});
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Extendiendo y definiendo nuestro modelo
+
+							```
+							var Todo = Backbone.Model.extend({
+							  // Default todo attribute values
+							  defaults: {
+							    title: '',
+							    completed: false
+							  },
+
+							  initialize: function(){
+							    console.log('This model has been initialized.');
+							    this.on('change:title', function(){
+							        console.log('Title value for this model has changed.');
+							    });
+							  },
+
+							  setTitle: function(newTitle){
+							    this.set({ title: newTitle });
+							  }
+							});
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Ocupando nuestro modelo
+
+							```
+							var myTodo = new Todo();
+
+							// Both of the following changes trigger the listener:
+							myTodo.set('title', 'Check what\'s logged.');
+							myTodo.setTitle('Go fishing on Sunday.');
+
+							// But, this change type is not observed, so no listener is triggered:
+							myTodo.set('completed', true);
+							console.log('Todo set as completed: ' + myTodo.get('completed'));
+
+							// Above logs:
+							// This model has been initialized.
+							// Title value for this model has changed.
+							// Title value for this model has changed.
+							// Todo set as completed: true
+
+							```
+						</script>
+					</section>
+					<section>
+						<h2>
+							Conlusión
+						</h2>
+						<p>
+							Los modelos son muy utilies para definir la informaicón que vamos a definir en nuestra aplicación.
+						</p>
+						<p>
+							En ellos se encuentra el puente para que los datos se estructuren y la información sea facilmente accesible.
+						</p>
+						<p>
+							Definir correctamente nuestros modelos puede ayudar a que nuestro desarrollo se vuelva fácil.
+						</p>
+					</section>
+				</section>
+				
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Views
+
+							Para definir una View 
+
+							```
+							var Todo = Backbone.View.extend({});
+							```
+
+							Sin embargo, a diferencia de los modelos, las Views necesitan definirse concretamente desde el princio, ya que en ellas además de escuchar a los modelos, se encarga de manejar el flujo de la aplicación.
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Empecemos por la propiedad central
+
+							**el** 
+
+							es básicamente una referencia a un elemento del DOM y todas las vistas deben tener uno.
+
+							```
+							var TodosView = Backbone.View.extend({
+							  tagName: 'ul', // required, but defaults to 'div' if not set
+							  className: 'container', // optional, you can assign multiple classes to 
+							                          // this property like so: 'container homepage'
+							  id: 'todos' // optional
+							});
+
+							var todosView = new TodosView();
+							console.log(todosView.el); // logs <ul id="todos" class="container"></ul>
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Definiendo el
+
+							Si el elemento ya existe en la página, se puede establecer el como un selector CSS que coincide con el elemento.
+
+							En una view ya instanciada
+							```
+							var todosView = new TodosView({el: $('#footer')});
+
+							```
+							
+							O en desde la definición de la view
+							```
+							var TodosView = Backbone.View.extend({
+							  el: '#footer'
+							});
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Definamos una View típica 
+
+							```
+							var TodoView = Backbone.View.extend({
+
+							  tagName:  'li',
+
+							  // Cache the template function for a single item.
+							  todoTpl: _.template( "An example template" ),
+
+							  events: {
+							    'dblclick label': 'edit',
+							    'keypress .edit': 'updateOnEnter',
+							    'blur .edit':   'close'
+							  },
+
+							  initialize: function (options) {
+							    // In Backbone 1.1.0, if you want to access passed options in
+							    // your view, you will need to save them as follows:
+							    this.options = options || {};
+							  },
+
+							  // Re-render the title of the todo item.
+							  render: function() {
+							    this.$el.html( this.todoTpl( this.model.attributes ) );
+							    this.input = this.$('.edit');
+							    return this;
+							  },
+
+							  edit: function() {
+							    // executed when todo label is double clicked
+							  },
+
+							  close: function() {
+							    // executed when todo loses focus
+							  },
+
+							  updateOnEnter: function( e ) {
+							    // executed on each keypress when in todo edit mode,
+							    // but we'll wait for enter to get in action
+							  }
+							});
+
+							var todoView = new TodoView();
+
+							// log reference to a DOM element that corresponds to the view instance
+							console.log(todoView.el); // logs <li></li>
+
+							```
+							
+						</script>
+					</section>
+					<section>
+						<h2>
+							Conlusión
+						</h2>
+						<p>
+							Las Views se encargan de encaminar los datos para que se muestren con un template especifico.
+						</p>
+						<p>
+							También se encargan de tener el control/flujo de la aplicación, la interacción con usuario a través de eventos.
+						</p>
+						<p>
+							Entonces las View se encargan de interactuar entre Usuario - DOM - Datos
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Collections
+
+							Normalmente, cuando se crea una colección usted también necesita definir una propiedad que especifica el tipo de modelo que su colección contendrá.
+
+							```
+							var Todo = Backbone.Model.extend({
+							  defaults: {
+							    title: '',
+							    completed: false
+							  }
+							});
+
+							var TodosCollection = Backbone.Collection.extend({
+							  model: Todo
+							});
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Interactuando con Collections
+
+							```
+							var Todo = Backbone.Model.extend({
+							  defaults: {
+							    title: '',
+							    completed: false
+							  }
+							});
+
+							var TodosCollection = Backbone.Collection.extend({
+							  model: Todo
+							});
+
+							var a = new Todo({ title: 'Go to Jamaica.'}),
+							    b = new Todo({ title: 'Go to China.'}),
+							    c = new Todo({ title: 'Go to Disneyland.'});
+
+							var todos = new TodosCollection([a,b]);
+							console.log("Collection size: " + todos.length);
+							// Logs: Collection size: 2
+
+							todos.add(c);
+							console.log("Collection size: " + todos.length);
+							// Logs: Collection size: 3
+
+							todos.remove([a,b]);
+							console.log("Collection size: " + todos.length);
+							// Logs: Collection size: 1
+
+							todos.remove(c);
+							console.log("Collection size: " + todos.length);
+							// Logs: Collection size: 0
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Recuperando modelos
+
+							```
+							var myTodo = new Todo({title:'Read the whole book', id: 2});
+
+							// pass array of models on collection instantiation
+							var todos = new TodosCollection([myTodo]);
+
+							var todo2 = todos.get(2);
+
+							// Models, as objects, are passed by reference
+							console.log(todo2 === myTodo); // true
+							```
+						</script>
+					</section>
+					<section>
+						<h2>
+							Conlusión
+						</h2>
+						<p>
+							Las colleciones son muy utiles para manejar grupos de información con estructuras similares, por ejemplo, una lista de usuarios, lista de libros, lista de tareas. 
+						</p>
+						<p>
+							La interacción con las collecciones es muy simple, a atrvés de ella podemos encontrar uno o varios modelos que necesitamos para interacción con nuestra view.
+						</p>
+						<p>
+							Las colecciones también implementan eventos, por lo cual, escuchar cuando se agrega, elimina, edita, o inlcusive resetar toda la colección es muy simple, esto facilita el uso dentro de las views.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## RESTful Persistence
+
+							Hasta el momento, todos nuestros datos de ejemplo se ha creado en el navegador. Para la mayoría de aplicaciones de una sola página, los modelos se derivan de un almacén de datos que reside en un servidor. Esta es un área en la que Backbone simplifica dramáticamente el código que se tiene que escribir para realizar la sincronización REST con un servidor a través de una API simple en sus modelos y colecciones.
+
+							```
+							Collections.fetch();
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Recuperando modelos del server
+
+							```
+							var Todo = Backbone.Model.extend({
+							  defaults: {
+							    title: '',
+							    completed: false
+							  }
+							});
+
+							var TodosCollection = Backbone.Collection.extend({
+							  model: Todo,
+							  url: '/todos'
+							});
+
+							var todos = new TodosCollection();
+							todos.fetch(); // sends HTTP GET to /todos
+
+							```
+							Recupera un conjunto de modelos desde el servidor en forma de una matriz JSON mediante el envío de una solicitud HTTP GET a la URL especificada por la propiedad url de la colección.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Guardando modelos en el server
+
+							Los cambios a los modelos se realizan individualmente utilizando el método del modelo de save(). Cuando save() se llama en un modelo que era inverosímil desde el servidor, se construye una URL añadiendo id del modelo a la URL de la colección y envía un PUT HTTP al servidor. 
+
+							Si el modelo es una nueva instancia que se creó en el navegador (es decir, no tiene un id) entonces un HTTP POST se envía a la URL de la colección. Collections.create() se puede utilizar para crear un nuevo modelo a la colección, y enviarlo al servidor en una sola llamada al método.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Guardando modelos del server
+
+							```
+							var Todo = Backbone.Model.extend({
+							  defaults: {
+							    title: '',
+							    completed: false
+							  }
+							});
+
+							var TodosCollection = Backbone.Collection.extend({
+							  model: Todo,
+							  url: '/todos'
+							});
+
+							var todos = new TodosCollection();
+							todos.fetch();
+
+							var todo2 = todos.get(2);
+							todo2.set('title', 'go fishing');
+							todo2.save(); // sends HTTP PUT to /todos/2
+
+							todos.create({title: 'Try out code samples'}); // sends HTTP POST to /todos and adds to collection
+							```
+							
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Eliminando modelos del server
+
+							A diferencia Collection.remove() que sólo elimina un modelo de una colección, Model.destroy() también enviará un DELETE HTTP a la URL de la colección.
+
+							```
+							var Todo = Backbone.Model.extend({
+							  defaults: {
+							    title: '',
+							    completed: false
+							  }
+							});
+
+							var TodosCollection = Backbone.Collection.extend({
+							  model: Todo,
+							  url: '/todos'
+							});
+
+							var todos = new TodosCollection();
+							todos.fetch();
+
+							var todo2 = todos.get(2);
+							todo2.destroy(); // sends HTTP DELETE to /todos/2 and removes from collection
+							```
+							
+						</script>
+					</section>
+
+					<section>
+						<h2>
+							Conlusión
+						</h2>
+						<p>
+							Consumir una APIRest es totalmente fácil implementadolos desde una colleción de datos. 
+						</p>
+						<p>
+							Es importante que el Backend con el cuál se este sincronizando este configurado para una comunicación a través de url semánticas.
+						</p>
+						<p>
+							En concreto consumir web services lo hace Backbone por nosotros, entonces sólo nos debemos concentrar en que nuestras colleciones esten debidamente comunicadas con las Views, es decir, dedicardos por completo a nuestra App.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Routers
+
+							En Backbone, routers proporcionan una forma para que usted conecte URL (fragmentos ya sea de hash #, o real) de las partes de su aplicación. 
+							Cualquier pieza de la aplicación que quieres ser bookmarkable, compartible, y de vuelta-button-poder, necesita una dirección URL.
+
+							```
+							http://example.com/#about
+							http://example.com/#search/seasonal-horns/page2
+							```
+
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Router e History
+
+							```
+							var TodoRouter = Backbone.Router.extend({
+							  /* define the route and function maps for this router */
+							  routes: {
+							    "about" : "showAbout",
+							    "search/:query" : "searchTodos",
+							    "search/:query/p:page" : "searchTodos"
+							  },
+
+							  showAbout: function(){},
+
+							  searchTodos: function(query, page){
+							    var page_number = page || 1;
+							    console.log("Page number: " + page_number + " of the results for todos containing the word: " + query);
+							  }
+							});
+
+							var myTodoRouter = new TodoRouter();
+
+							Backbone.history.start();
+
+							// Go to and check console:
+							// http://localhost/#search/job/p3   logs: Page number: 3 of the results for todos containing the word: job
+							// http://localhost/#search/job      logs: Page number: 1 of the results for todos containing the word: job 
+							// etc.
+
+							```
+						</script>
+					</section>
+				
+					<section>
+						<h2>
+							Conlusión
+						</h2>
+						<p>
+							Los routes nos permiten navegar en el flujo de la App.
+						</p>
+						<p>
+							Cuándo se utilizan los routes es recomendable implementar history, dado que esto activará la historía del navegador, y podremos sacerle beneficio en cuanto a rendimiento y accesibilidad para el usuario.
+						</p>
+						<p>
+							POdemos ocupar los router como handlers para nuestras views, collections o models.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Con Headless Drupal
+						</h2>
+						<p>
+							Realmente este es un tema amplio, sin embargo mencionaré algunos tips, para implementar backbone con un drupal decouple.
+						</p>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">Define un APIRest con el backend de drupal, y construyes tu App con Backbone, ocupando las collections y definiendo la url para el manejo de los web services. Tanto el back con el front residen en instancias diferentes.</li>
+							<li class="fragment">Se puede hacer un semi-decouple, esto quiere decir que sólo fragmentos de drupal se implemente con backbone, esta técnica me agrada ya que dejas el manejo pesado de contenido a drupal, y te enfoncas en dejarle el manejo de partes especificas a backbone, es decir, desarrollar pequeñas app de backbone dentro de drupal ocupando el sistema de templates, e incluyendo tu definicón con preprocesadores dentro de tu theme. Al final resulta una sola instancia  optimizada con partes de front-end moderno.</li>
+							
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Más recursos</h2>
+					<ul>
+						<li>Google :) </li>
+						<li><a href="http://backbonejs.org/">Documentación Backbone</a></li>
+						<li><a href="http://underscorejs.org/">Documentación Underscore</a></li>
+						<li><a href="http://addyosmani.github.io/backbone-fundamentals/">Libro: Developing Backbone.js Applications</a></li>
+						<li><a href="http://api.jquery.com/">Documentación jQuery</a></li>
+						<li><a href="http://librosweb.es/libro/javascript/">Libro: Introducción a JavaScript</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						Isaac García Sierra <br>
+						Back End Developer <br>
+						igasi.github.io <br>
+						@isaac_gasi <br>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
